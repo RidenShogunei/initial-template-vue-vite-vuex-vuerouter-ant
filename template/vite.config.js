@@ -17,7 +17,11 @@ export default defineConfig({
     Components({
       dirs: ['src/components/'],
       extensions: ['vue', 'md'],
-      resolvers: [AntDesignVueResolver(), IconsResolver()],
+      resolvers: [
+        AntDesignVueResolver({
+          importStyle: false, // css in js
+        })
+      ],
     }),
     Icons({
       compiler: 'vue3',

@@ -5,9 +5,9 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin } from 'vite-plugin-style-import'
 import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     AutoImport({
@@ -17,7 +17,11 @@ export default defineConfig({
     Components({
       dirs: ['src/components/'],
       extensions: ['vue', 'md'],
-      resolvers: [AntDesignVueResolver(), IconsResolver()],
+      resolvers: [
+        AntDesignVueResolver({
+          importStyle: false, // css in js
+        })
+      ],
     }),
     Icons({
       compiler: 'vue3',
